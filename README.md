@@ -51,6 +51,8 @@ The layout is designed with left–right symmetry and shared diffusion to ensure
 * Assura-generated VNL netlist included for reference
 * Results available in: `verification/lvs/`
 
+### Static Noise Margin (SNM)
+- Hold SNM evaluated using butterfly curve analysis (`verification/snm/`)
 ---
 
 ## 🧪 Post-Layout Verification (RCX)
@@ -85,10 +87,12 @@ Waveforms are available in the `simulation/` directory.
 │   └── 6t_sram_layout.png
 ├── verification/
 │   ├── drc/
-│   │   └── drc_clean.png
+│      └── drc_clean.png
 │   └── lvs/
 │       ├── lvs_clean.png
 │       └── 6t_sram_assura_lvs.vnl
+│   ├── snm/
+│       └── hold_snm_butterfly.png
 ├── simulation/
 │   ├── hold_waveform.png
 │   ├── write_waveform.png
@@ -110,7 +114,6 @@ Waveforms are available in the `simulation/` directory.
 
 ## 🚀 Future Work (Optional)
 
-* Static Noise Margin (SNM) analysis using butterfly curves
 * SRAM array construction and tiling
 * Sense amplifier and precharge circuit integration
 * Write/read margin analysis under PVT corners
