@@ -1,0 +1,62 @@
+*|CDS    : Assura VNL File
+*|Version: 1.0
+*|Date   : Sat Jan 31 19:12:50 2026
+
+*------------------------------------------------------------------
+* Device Definitions
+*------------------------------------------------------------------
+
+c pmos1v MOS  D B   G B   S B   B B ;;
+* 4 pins
+* 4 nets
+* 0 instances
+s (p D S);
+e
+
+c nmos1v MOS  D B   G B   S B   B B ;;
+* 4 pins
+* 4 nets
+* 0 instances
+s (p D S);
+e
+
+*------------------------------------------------------------------
+* 6T SRAM Cell Definition
+*------------------------------------------------------------------
+
+c "6t_sram schematic RKM" Cell
+    BL    B
+    gnd   G
+    BLB   B
+    vdd   P
+    WL    B
+    QBar  I
+    Q     I
+;;
+
+* 7 pins
+* 7 nets
+* 6 instances
+
+*------------------------------------------------------------------
+* NMOS Access Transistors
+*------------------------------------------------------------------
+
+i NM3 nmos1v Q     WL  BL   gnd ; l 1e-07  m 1  w 1.2e-07 ;
+i NM2 nmos1v BLB   WL  QBar gnd ; l 1e-07  m 1  w 1.2e-07 ;
+
+*------------------------------------------------------------------
+* NMOS Pull-Down Transistors
+*------------------------------------------------------------------
+
+i NM1 nmos1v Q     QBar gnd  gnd ; l 1e-07  m 1  w 1.2e-07 ;
+i NM0 nmos1v QBar  Q    gnd  gnd ; l 1e-07  m 1  w 1.2e-07 ;
+
+*------------------------------------------------------------------
+* PMOS Pull-Up Transistors
+*------------------------------------------------------------------
+
+i PM2 pmos1v Q     QBar vdd  vdd ; l 1e-07  m 1  w 1.2e-07 ;
+i PM0 pmos1v QBar  Q    vdd  vdd ; l 1e-07  m 1  w 1.2e-07 ;
+
+e
